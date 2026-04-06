@@ -14,7 +14,15 @@ const playGame = () => {
         }
     };
 
-    const humanChoice = () => {return prompt("Enter rock, paper, or scissors", "rock").toLowerCase()};
+    const humanChoice = () => {
+        let choice = prompt("Enter rock, paper, or scissors", "rock").toLowerCase().trim();
+        
+        while ((choice !== "rock") && (choice !== "paper") && (choice !== "scissors")) {
+            choice = prompt("Enter rock, paper, or scissors", "rock").toLowerCase().trim();
+        }
+
+        return choice;
+    };
 
     const playRound = (human, computer) => {
 
