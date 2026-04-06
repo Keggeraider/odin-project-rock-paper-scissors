@@ -1,36 +1,29 @@
-function getComputerChoice() {
-    const choice = Math.floor(Math.random() * 3);
-
-    if (choice === 0){
-        return "rock";
-    } else if (choice === 1){
-        return "paper";
-    } else {
-        return "scissors";
-    }
-}
-
-function getHumanChoice() {
-
-    return prompt("Enter rock, paper, or scissors", "rock");
-}
-
-
-function playGame() {
+const playGame = () => {
     
     let humanScore = 0;
     let computerScore = 0;
-    let computerChoice = " ";
-    let humanChoice = " ";
+    const computerChoice = () => {
+        const choice = Math.floor(Math.random() * 3);
 
-    function playRound(humanChoice, computerChoice){
+        if (choice === 0){
+            return "rock";
+        } else if (choice === 1){
+            return "paper";
+        } else {
+            return "scissors";
+        }
+    };
 
-        switch (computerChoice) {
-            case humanChoice:
-                alert(`Computer chose ${computerChoice}. It's a tie.`);
+    const humanChoice = () => {return prompt("Enter rock, paper, or scissors", "rock").toLowerCase()};
+
+    const playRound = (human, computer) => {
+
+        switch (computer) {
+            case human:
+                alert(`Computer chose ${computer}. It's a tie.`);
                 break;
             case "rock":
-                switch (humanChoice) {
+                switch (human) {
                     case "paper":
                         alert("Computer chose rock. You win!");
                         humanScore++;
@@ -40,8 +33,9 @@ function playGame() {
                         computerScore++;
                         break;
                 }
+                break;
             case "paper":
-                switch (humanChoice) {
+                switch (human) {
                     case "rock":
                         alert("Computer chose paper. Computer wins.");
                         computerScore++;
@@ -51,8 +45,9 @@ function playGame() {
                         humanScore++;
                         break;
                 }
+                break;
             case "scissors":
-                switch (humanChoice) {
+                switch (human) {
                     case "rock":
                         alert("Computer chose scissors. You win!");
                         humanScore++;
@@ -62,20 +57,19 @@ function playGame() {
                         computerScore++;
                         break;
                 }
+                break;
         }
-    }
+    };
 
     for (i = 0; i < 5; i++ ) {
 
-        computerChoice = getComputerChoice();
-        humanChoice = getHumanChoice().toLowerCase();
-        playRound(humanChoice, computerChoice);
+        playRound(humanChoice(), computerChoice());
         
     }
 
     alert(`Computer Score is ${computerScore} and your score is ${humanScore}`);
     (computerScore > humanScore) ? alert("Computer Wins.") : alert("You win!");
-}
+};
 
 playGame();
 
