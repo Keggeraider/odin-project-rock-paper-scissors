@@ -9,7 +9,11 @@ body {
     flex-direction: column;
 }
 
-.title {
+main {
+    flex: 1;
+}
+
+.title, footer {
     min-height: 3rem;
     width: 100vw;
     background-color: lightgrey;
@@ -26,7 +30,27 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
+    padding: 2em;
+}
+
+.selections {
+
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 5rem;
+}
+
+button {
+    width: 5rem;
+    height: 2rem;
+    background-color: olive;
+    border-radius: 3rem;
+    outline: none;
+    border: 2px solid transparent;
+    color: greenyellow;
+    cursor: pointer;
 }
 
 .scoreboard {

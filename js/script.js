@@ -5,16 +5,13 @@ const playRound = (human, computer) => {
 
     switch (computer) {
         case human:
-            alert(`Computer chose ${computer}. It's a tie.`);
             break;
         case "rock":
             switch (human) {
                 case "paper":
-                    alert("Computer chose rock. You win!");
                     humanScore++;
                     break;
                 case "scissors":
-                    alert("Computer chose rock. Computer wins.");
                     computerScore++;
                     break;
             }
@@ -22,11 +19,9 @@ const playRound = (human, computer) => {
         case "paper":
             switch (human) {
                 case "rock":
-                    alert("Computer chose paper. Computer wins.");
                     computerScore++;
                     break;
                 case "scissors":
-                    alert("Computer chose paper. You win!");
                     humanScore++;
                     break;
             }
@@ -34,11 +29,9 @@ const playRound = (human, computer) => {
         case "scissors":
             switch (human) {
                 case "rock":
-                    alert("Computer chose scissors. You win!");
                     humanScore++;
                     break;
                 case "paper":
-                    alert("Computer chose scissors. Computer wins.");
                     computerScore++;
                     break;
             }
@@ -66,7 +59,8 @@ const computerScoreElement = document.querySelector(".score-comp");
 const playerScoreElement = document.querySelector(".score-player");
 
 const scoreCardElement = document.querySelector(".score-card");
-
+const humanChoiceElement = document.querySelector(".selection-player");
+const computerChoiceElement = document.querySelector(".selection-comp");
 
 btns.addEventListener('click', (e) => {
     // let target = e.target;
@@ -75,6 +69,20 @@ btns.addEventListener('click', (e) => {
     computerPick = computerChoice();
 
     playRound(humanChoice, computerPick);
+
+    const playerChoicePara = document.createElement("p");
+    const computerChoicePara = document.createElement("p");
+
+    console.log(humanChoiceElement.childNodes)
+
+    playerChoicePara.textContent = humanChoice;
+    computerChoicePara.textContent = computerPick;
+
+    if (humanChoiceElement.contains(playerChoicePara))  { humanChoiceElement.removeChild(playerChoicePara); }
+    if (computerChoiceElement.contains(computerChoicePara)) { computerChoiceElement.removeChild(computerChoicePara); }
+
+    humanChoiceElement.replaceChildren(playerChoicePara);
+    computerChoiceElement.replaceChildren(computerChoicePara);
 
     console.log(`human: ${playerScoreElement.textContent}, computer: ${computerScoreElement.textContent}`);
 
