@@ -62,15 +62,26 @@ const btns = document.querySelector(".buttons");
 let humanChoice = "";
 let computerPick = "";
 
-btns.addEventListener('click', (e) => {
-    let target = e.target;
+const computerScoreElement = document.querySelector(".score-comp");
+const playerScoreElement = document.querySelector(".score-player");
 
-    humanChoice = target.id;
+const scoreCardElement = document.querySelector(".score-card");
+
+
+btns.addEventListener('click', (e) => {
+    // let target = e.target;
+
+    humanChoice = e.target.id;
     computerPick = computerChoice();
 
-    // playRound(humanChoice, computerPick);
+    playRound(humanChoice, computerPick);
 
-    console.log(`human: ${humanChoice}, computer: ${computerPick}`);
+    console.log(`human: ${playerScoreElement.textContent}, computer: ${computerScoreElement.textContent}`);
+
+    computerScoreElement.textContent = computerScore;
+    playerScoreElement.textContent = humanScore;
+
+    scoreCardElement.classList.toggle(".flipped");
 
 });
 
